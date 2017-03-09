@@ -113,15 +113,15 @@ namespace Hi_WorkLog
             WorkItemCollection ddd = tfs.Query(@" Select  [ID],[标题]
                 From WorkItems
                 Where [工作项类型] = 'Bug'  and [解决者] = '" + tfs.Client.UserDisplayName + "' and 状态 in('已提交','已关闭')  and [解决日期] = '" + dt.ToString("yyyy/MM/dd") + "' order by [ID] ");
-            Console.WriteLine("系统检测到您今天完成了 " + ddd.Count + "个Bug");
+            Console.WriteLine("系统检测到您" + dt.ToString("yyyy年MM月dd日") + "完成了 " + ddd.Count + "个Bug");
             foreach (WorkItem item in ddd)
             {
-                Console.WriteLine(item.Id + ":" + item.Title);
+                Console.WriteLine("BUG: " + item.Id + ":" + item.Title.Substring(0, item.Title.Length > 15 ? 15 : item.Title.Length) + "...  附加说明: 计划=" + item.Fields["初始估计"].Value + "  完成=" + item.Fields["已完成工作"].Value + "  剩余=" + item.Fields["剩余工作"].Value + ".");
             }
-            //手动输入
-            Write: Console.WriteLine("请输入日志内容。 输入提示：工作内容;工作时间;加班工时");
+        //手动输入
+        Write: Console.WriteLine("请输入日志内容。 输入提示：工作内容;工作时间;加班工时");
             string Expression = Console.ReadLine().TrimEnd(';');
-            
+
             //获取数量
             var p = Expression.Split(';');
             string title = "";
@@ -151,7 +151,7 @@ namespace Hi_WorkLog
                     LinkID.Add(item.TrimStart('&'));
                 }
             }
-            
+
             WorkItem workitem = tfs.CreateWorkItem("工作日志");
             workitem.Fields["指派给"].Value = tfs.Client.UserDisplayName;
             workitem.Fields["标题"].Value = title;
