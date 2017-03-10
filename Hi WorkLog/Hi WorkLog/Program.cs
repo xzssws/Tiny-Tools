@@ -170,7 +170,10 @@ namespace Hi_WorkLog
                 workitem.Save();
                 Console.WriteLine("提交成功，是否继续（Y/N）");
             }
-            Console.WriteLine("提交成功，是否继续（Y/N）");
+            else
+            {
+                Console.WriteLine("提交失败，是否继续（Y/N）");
+            }
             string Text = Console.ReadLine();
             if (Text.ToLower() == "y")
             {
