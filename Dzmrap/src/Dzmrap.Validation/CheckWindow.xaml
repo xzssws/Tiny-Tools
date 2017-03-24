@@ -1,0 +1,12 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Dzmrap.Validation.CheckWindow"
+        Title="Dzmrap 认证"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow" Width="348" Height="160" MaxWidth="348" MaxHeight="160" Background="#FF595959" Foreground="White" >
+    <Grid>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="17,50,0,0" x:Name="txt_number" VerticalAlignment="Top" Width="308" />
+        <Button Content="确定" Height="23" HorizontalAlignment="Left" Margin="161,88,0,0" x:Name="btn_ok" VerticalAlignment="Top" Width="75" Click="btn_ok_Click" RenderTransformOrigin="0.693,-1.913" />
+        <Button Content="取消" Height="23" HorizontalAlignment="Left" Margin="250,88,0,0" x:Name="btn_cancel" VerticalAlignment="Top" Width="75" Click="btn_cancel_Click" />
+        <Label Content="请在下方输入您的Dzmrap的序列号：" Height="13" HorizontalAlignment="Left" Margin="17,21,0,0" x:Name="label1_Copy" VerticalAlignment="Top" Width="197" Foreground="White" />
+    </Grid>
+</Window>

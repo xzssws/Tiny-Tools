@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.IO;
+
+namespace 读取节点
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        /// &lt;summary&gt;
+        /// 要解析的文件路径
+        /// &lt;/summary&gt;
+        public string DocumentFile=Environment.CurrentDirectory+"\\文件目录.txt";
+        /// &lt;summary&gt;
+        /// 输出文本格式
+        /// &lt;/summary&gt;
+        public string StringFormat="INSERT INTO OA_SysModels([ModelName],[ParentId],[DisplayOrder],[URL]) VALUES('{0}',{1},{2},'{3}');";
+        /// &lt;summary&gt;
+        /// 输出Web网站路径
+        /// &lt;/summary&gt;
+        public string WebRoot = @"E:\程序员~\OA目录\";
+        /// &lt;summary&gt;
+        /// 输出地脚本文件路径
+        /// &lt;/summary&gt;
+        public string outFilePath = "c:\\数据库脚本.sql";
+
+        public void Init()
+        {
+            List&lt;Model&gt; ls = ReadNode();
+            StringBuilder sb = new StringBuilder();
+            ReadLs(ls, ref sb);
+            File.WriteAllText(outFilePath, sb.ToString(), Encoding.UTF8);
+            CreateFiles(ls, WebRoot);
+        }
+        /// &lt;summary&gt;
+        /// /解析文件 目前只能三层 并返回集合
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;整体集合&lt;/returns&gt;
+        public List&lt;Model&gt; ReadNode()
+        {
+            //解析文档每行
+            string[] FileStrLines = File.ReadAllLines(DocumentFile);
+
+            List&lt;Model&gt; ls = new List&lt;Model&gt;();//总集合
+            int i = 0;//根节点层次
+
+            Model[] model = new Model[3];
+            Model firstNode = null;//首层节点
+            Model SecondNode = null;//二层节点
+            Model ThreeNode = null;//三层节点
+            List&lt;Model&gt; gz = new List&lt;Model&gt;();//当前根节点的子节点
+            int id = 0;//当前节点ID
+            
+            foreach (string item in FileStrLines)
+            {
+
+                if (!item.Contains("\t"))//最根级节点
+                {
+                    i++;
+                    id++;
+                    firstNode = new Model(item.Trim());
+                    firstNode.ID = id;
+                    firstNode.ParentID = 0;
+                    firstNode.OrderId = i;
+                    firstNode.URL = "~/" + firstNode.Name.Trim() + ".aspx";
+                    ls.Add(firstNode);
+
+                }
+                else if (item.Contains("\t") &amp;&amp; !item.Contains("\t\t"))//如果是第一级子节点
+                {
+                    firstNode.OZid++;
+                    id++;//子节点增加
+                    if (firstNode._Ls == null)//如果当前根节点集合为空
+                    {
+                        firstNode._Ls = new List&lt;Model&gt;();//创建一个新的集合
+                    }
+                    SecondNode = new Model(item.Trim());
+                    SecondNode.ID = id;//子节点等于当前子节点
+                    SecondNode.ParentID = firstNode.ID;//父节点的ID=第一层次节点ID
+                    SecondNode.OrderId = firstNode.OZid;//当前节点顺序等于父节点的当前子节点次序
+                    SecondNode.URL = "~/" + firstNode.Name + "/" + SecondNode.Name + ".aspx";//URL路径
+                    firstNode._Ls.Add(SecondNode);//将文本添加到节点
+                }
+                else if (item.Contains("\t\t") &amp;&amp; !item.Contains("\t\t\t"))//如果是第二级节点
+                {
+                    id++;
+                    if (SecondNode._Ls == null)
+                    {
+                        SecondNode._Ls = new List&lt;Model&gt;();
+                    }
+                    ThreeNode= new Model();
+                    SecondNode.OZid++;
+                    ThreeNode.Name = item.Trim();
+                    ThreeNode.ID = id;
+                    ThreeNode.ParentID = SecondNode.ID;
+                    ThreeNode.OrderId = SecondNode.OZid;
+                    ThreeNode.URL = "~/" + firstNode.Name + "/" + SecondNode.Name + "/" + ThreeNode.Name + ".aspx";
+                    SecondNode._Ls.Add(ThreeNode);
+                }
+                else if (item.Contains("\t\t\t"))
+                {
+                    id++;
+                    if (ThreeNode._Ls==null)
+                    {
+                        ThreeNode._Ls = new List&lt;Model&gt;();
+                    }
+                    ThreeNode.OZid++;
+                    Model pz = new Model();
+                    pz.Name = item.Trim() ;
+                    pz.ID = id;
+                    pz.ParentID = ThreeNode.ID;
+                    pz.OrderId = ThreeNode.OZid;
+                    pz.URL = "~/" + firstNode.Name + "/" + SecondNode.Name + "/" + ThreeNode.Name + pz.Name + ".aspx";
+                    ThreeNode._Ls.Add(pz);
+                }
+            }
+            return ls;
+
+        }
+
+        //读出集合
+        public void ReadLs(List&lt;Model&gt; ls, ref StringBuilder sb)
+        {
+            foreach (Model item in ls)
+            {
+                sb.AppendLine(string.Format(StringFormat, item.Name.Trim(), item.ParentID, item.OrderId, item.URL));
+                if (item._Ls != null)
+                {
+                    ReadLs(item._Ls, ref sb);
+                }
+            }
+        }
+
+        DirectoryInfo dg;
+
+        public void CreateFiles(List&lt;Model&gt; ls, string src)
+        {
+            string Src = src;//当前所在目录
+
+            foreach (Model item in ls)
+            {
+                if (item._Ls != null)
+                {
+                    dg = Directory.CreateDirectory(Src + item.Name.Trim() + "\\");
+                    CreateFiles(item._Ls, dg.FullName);
+
+                }
+                string[] rs = CreateAspx(item.Name);
+                File.WriteAllText(src + item.Name+ ".aspx", rs[0], Encoding.UTF8);
+                File.WriteAllText(src + item.Name + ".aspx.cs", rs[1], Encoding.UTF8);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// 创建aspx和aspx.cs文件 代码文件
+        /// &lt;/summary&gt;
+        /// &lt;param name="name"&gt;创建aspx的名称&lt;/param&gt;
+        /// &lt;returns&gt;string数组 0表示aspx文件 1表示aspx.cs文件&lt;/returns&gt;
+        /// 
+        public string[] CreateAspx(string name)
+        {
+            string[] rstring = new string[2];
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("&lt;%@ Page Language=\"C#\" AutoEventWireup=\"true\" CodeFile=\"" + name + ".aspx.cs\" Inherits=\"" + name + "\" %&gt;" + Environment.NewLine);
+            sb.AppendLine("&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"&gt;" + Environment.NewLine);
+            sb.AppendLine("&lt;html xmlns=\"http://www.w3.org/1999/xhtml\"&gt;" + Environment.NewLine);
+            sb.AppendLine("\t&lt;head runat=\"server\"&gt;");
+            sb.AppendLine("\t\t&lt;title&gt;" + name + "&lt;/title&gt;");
+            sb.AppendFormat("\t&lt;/head&gt;{0}\t&lt;body&gt;{0}\t\t&lt;form id=\"form1\" runat=\"server\"&gt;{0}\t\t\t&lt;div&gt;{0}{0}\t\t\t&lt;/div&gt;{0}\t\t&lt;/form&gt;{0}\t&lt;/body&gt;{0}&lt;/html&gt;", Environment.NewLine);
+
+            rstring[0] = sb.ToString();
+
+            StringBuilder cs = new StringBuilder();
+            cs.AppendLine(@"using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;");
+            cs.AppendLine("public partial class " + name + ":System.Web.UI.Page");
+            cs.AppendLine("\t{");
+            cs.AppendLine("\t\tprotected void Page_Load(object sender,EventArgs e)");
+            cs.AppendLine("\t\t{" + Environment.NewLine + "\t\t}");
+            cs.AppendLine("}" + Environment.NewLine);
+
+            rstring[1] = cs.ToString();
+            return rstring;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            if (textBox1.Text==string.Empty)
+            {
+                MessageBox.Show("请输入输出的文本格式","信息提示");
+            }
+            else
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "脚本|*.sql";
+                if (sfd.ShowDialog()==DialogResult.OK)
+                {
+                    StringFormat = textBox1.Text;
+                    textBox1.Enabled = false;
+                    outFilePath = sfd.FileName;
+                }
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog()==DialogResult.OK)
+            {
+                DocumentFile = ofd.FileName;//设置解析文档路径
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                WebRoot = ofd.SelectedPath;//设置解析文档路径
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Init();
+            label1.Text = "生成成功";
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// 表示目录层次
+    /// &lt;/summary&gt;
+    public class Model
+    {
+        public Model() { }
+        public Model(string name)
+        {
+            this.Name = name;
+        }
+        /// &lt;summary&gt;
+        /// 节点名称
+        /// &lt;/summary&gt;
+        public string Name { get; set; }
+        /// &lt;summary&gt;
+        /// 节点的子节点集合
+        /// &lt;/summary&gt;
+        public List&lt;Model&gt; _Ls { get; set; }
+        /// &lt;summary&gt;
+        /// 当前节点
+        /// &lt;/summary&gt;
+        public int ID { get; set; }
+        /// &lt;summary&gt;
+        /// 父节点序号
+        /// &lt;/summary&gt;
+        public int ParentID { get; set; }
+        /// &lt;summary&gt;
+        /// 排序序号
+        /// &lt;/summary&gt;
+        public int OrderId { get; set; }
+        /// &lt;summary&gt;
+        /// 子项当前序号
+        /// &lt;/summary&gt;
+        public int OZid { get; set; }
+        /// &lt;summary&gt;
+        /// 关联的URL路径
+        /// &lt;/summary&gt;
+        public string URL { get; set; }
+    }
+}</value>
+  </data>
+</root>

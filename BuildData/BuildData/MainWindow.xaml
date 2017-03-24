@@ -1,0 +1,99 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:BuildData.DataConfig"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="BuildData.MainWindow"
+        Title="BuildData" Height="426" Width="652" Background="White" Name="Mw" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" ResizeMode="NoResize">
+    <Window.Resources>
+        <ToolTip x:Key="ToolHelp">
+                $ads 地址;
+                $age 年龄;
+                $brd 生日;
+                $mal 电邮;
+                $name 名称;
+                $num 编号;
+                $pwd 密码;
+                $phone 电话;
+                $qq QQ;
+                $sex 性别;
+                $guid GUID编码;
+                $nt 现在时间;
+                $today今天日期;
+        </ToolTip>
+        <LinearGradientBrush x:Key="ControlBackgroun" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF5E5E5E" Offset="0" />
+            <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+            <GradientStop Color="#FFDDDDDD" Offset="0.5" />
+            <GradientStop Color="#FF333333" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="TextBoxBorder" EndPoint="0,20" StartPoint="0,0" MappingMode="Absolute">
+            <GradientStop Color="#ABADB3" Offset="0.05" />
+            <GradientStop Color="#E2E3EA" Offset="0.07" />
+            <GradientStop Color="#E3E9EF" Offset="1" />
+        </LinearGradientBrush>
+        <Style TargetType="TextBox" x:Key="Tx">
+            <Style.Setters>
+                <Setter Property="Background" Value="#FF565656" />
+                <Setter Property="Foreground" Value="#FFF9F9F9" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style.Setters>
+        </Style>
+        <local:PriviewConverter x:Key="converter" />
+    </Window.Resources>
+    <Grid Background="#FF333333">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="390*" />
+            <ColumnDefinition Width="240*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*" />
+            <RowDefinition Height="112*" />
+            <RowDefinition Height="275*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="0,8,0,0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52*" />
+                <ColumnDefinition Width="112*" />
+                <ColumnDefinition Width="76*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="36*" />
+                <RowDefinition Height="36*" />
+                <RowDefinition Height="119*" />
+                <RowDefinition Height="164*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.ColumnSpan="3" Grid.Row="4" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="51*" />
+                    <ColumnDefinition Width="180*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*" />
+                    <RowDefinition Height="35*" />
+                    <RowDefinition Height="69*" />
+                </Grid.RowDefinitions>
+                <Button BorderBrush="White" Content="生成" Foreground="#FFDADADA" Margin="116,10,5,0" Click="BuildFile" x:Name="btnBuild" FontSize="16" Background="#FF505050" Height="59" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" />
+                <TextBox Height="21" Margin="5,0,5,0"  x:Name="txtCount" Style="{DynamicResource Tx}" Text="{Binding BuildCount}" TextChanged="txtCount_TextChanged" Grid.Column="1" />
+                <TextBox Height="21" Margin="5,0,29,0" IsReadOnly="True" x:Name="txtPath"  Style="{DynamicResource Tx}" Text="{Binding SavePath, Mode=TwoWay}" TextChanged="txtPath_TextChanged" Grid.Row="1" Grid.Column="1" />
+                <Button Background="#FF707070" Content="..." Foreground="#FF434343" HorizontalAlignment="Right"  Height="21"  x:Name="btnSavePath" Click="btnSavePath_Click"  Width="20" Grid.Row="1" Grid.Column="1" Margin="0,10,5,10" />
+                <TextBlock Text="保存路径"   Foreground="White"   Grid.Row="1" Height="18" />
+                <TextBlock Text="循环数量"   Foreground="White" Height="18"/>
+            </Grid>
+            <ComboBox Margin="4,0,4,0" Background="#FF565656" Foreground="Black" SelectedValue="{Binding SelectFlag, ElementName=Mw}" ItemsSource="{Binding Flags, ElementName=Mw}" SelectedValuePath="Value" DisplayMemberPath="Key" x:Name="cmbType"  Height="22" Grid.Row="2"  Grid.Column="1" SelectionChanged="cmbType_SelectionChanged"/>
+            <TextBox Margin="4,0,4,0"  TextWrapping="Wrap" Background="#FF565656"  Foreground="#FFF9F9F9" Style="{DynamicResource Tx}" x:Name="txtFlagName" TextChanged="txtFlagName_TextChanged" Grid.Row="1"  Height="21" Grid.Column="1" />
+            <TextBlock Margin="10,0,0,0"  Foreground="#FFE0E0E0" Grid.Row="1"   Height="18"><Run Text="标识" /></TextBlock>
+            <TextBlock Margin="10,0,0,0"  Foreground="#FFE0E0E0" Grid.Row="2" Text="类型" Height="18" />
+            <Button Margin="5" Content="增加" Background="#FF545454" Foreground="#FFF3F3F3" BorderBrush="#FF646464" Click="AddFlags" x:Name="btnCreateFlag" Grid.Row="1" FontSize="14.667" Grid.Column="2" Grid.RowSpan="2" />
+            <ListBox Margin="8,8,4,8" Background="#FF565656" Foreground="White" ItemsSource="{Binding Config.Flags, ElementName=Mw}" DisplayMemberPath="Key" Name="FlagsBox" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <TextBlock Foreground="White" Grid.Column="2" Grid.Row="3" Margin="0,8" TextWrapping="WrapWithOverflow">
+                注意: 标志符长度不可以超过7位, 标示符头部用$用以标示才可以使用。
+            </TextBlock>
+        </Grid>
+        <TextBox Margin="8,33,7,1" TextWrapping="Wrap" Background="#FF565656" Grid.Row="1" Foreground="White" Text="{Binding StrFormatter}" Style="{StaticResource Tx}" Name="TxtFormat" ToolTip="{StaticResource ToolHelp}" />
+        <!--<TextBox Background="#FF565656" Foreground="White" Grid.ColumnSpan="2" Margin="11,77,9,12" TextWrapping="Wrap" Grid.Row="2" Text="{Binding ElementName=TxtFormat, Path=Text,Converter={StaticResource converter}}" IsReadOnly="True" Style="{StaticResource Tx}" />-->
+        <TextBox Background="#FF565656" Foreground="White" Margin="8,44,7,13" TextWrapping="Wrap" Grid.Row="2" Text="{Binding ElementName=TxtFormat, Path=Text,Converter={StaticResource converter}}" IsReadOnly="True" Style="{StaticResource Tx}" />
+        <TextBlock Text="预览数据" TextWrapping="Wrap" Margin="8,19,0,0" Foreground="White" HorizontalAlignment="Left" Width="53.062" Grid.Row="2" VerticalAlignment="Top" Height="20.658" />
+        <TextBlock Text="输入样本" TextWrapping="Wrap" Margin="8,8,0,0" Foreground="White" HorizontalAlignment="Left" Width="53.062" VerticalAlignment="Top" Height="20.658" Grid.Row="1" ToolTip="{StaticResource ToolHelp}"></TextBlock>
+    </Grid>
+</Window>

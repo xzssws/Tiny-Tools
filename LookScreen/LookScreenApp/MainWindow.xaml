@@ -1,0 +1,127 @@
+﻿<Window x:Class="LookScreenApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cor="clr-namespace:LookScreenApp.Convter"
+        Title="MainWindow" Height="Auto" Width="Auto"
+        Name="OneWindow"
+        mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" SizeToContent="WidthAndHeight" MinWidth="320" MinHeight="160" d:DesignHeight="338" d:DesignWidth="320" Loaded="Window_Loaded">
+    <Window.Resources>
+        <cor:DateTimeToString x:Key="dtToStr" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="218*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+            <StackPanel.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Width" Value="300" />
+                </Style>
+            </StackPanel.Resources>
+            <Expander Header="计划策略" ExpandDirection="Down">
+                <Grid Height="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="230" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Height="100" VerticalAlignment="Top">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="3,1" />
+                                <Setter Property="Height" Value="24" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Content="定时计划" />
+                        <Button Content="清理计划" />
+                    </StackPanel>
+                    <ListBox Margin="5" Grid.Column="1">
+                        <ListBoxItem Content="资源计划">
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </Expander>
+            <Expander Header="程序配置" ExpandDirection="Down">
+                <Grid Name="gridSystemConfig">
+                    <Grid.Resources>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Margin" Value="10,0" />
+                            <Setter Property="Height" Value="25" />
+                        </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="230" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label Content="路径格式" Grid.Row="2" />
+                    <Label Content="保存路径" Grid.Row="1" />
+                    <ComboBox Grid.Row="2" Grid.Column="1" Height="22"  DisplayMemberPath="Value" ItemsSource="{Binding PathTypeCollection,ElementName=OneWindow}" SelectedItem="{Binding LookScreenConfig.SaveType.CODE}">
+                    </ComboBox>
+                    <ComboBox  Grid.Row="3"  Grid.Column="1"  Height="22"  DisplayMemberPath="Value" ItemsSource="{Binding ImageTypeCollection,ElementName=OneWindow}" SelectedItem="{Binding LookScreenConfig.ImageType.CODE}" />
+                    <Label Content="图片格式" Grid.Row="3" />
+                    <Label Content="定时监视" Grid.Row="4" />
+                    <TextBlock Name="pathsrc" Text="{Binding FilePath}" Margin="10,1,41,0" ToolTip="{Binding  ElementName=pathsrc, Path=Text}" Height="18" Grid.Row="1" Grid.Column="1" />
+                    <Button Content="..." Margin="194,6,11,4" Height="20" Grid.Row="1" Grid.Column="1" Width="25" BorderThickness="11,3,11,12" Click="Button_Click" />
+                    <Slider Name="slider1" Grid.Column="1" Grid.Row="4" Margin="10,3,57,3"  Height="22" Value="{Binding Time}"  Maximum="999" Minimum="1" Width="163" SmallChange="1" IsSnapToTickEnabled="True" />
+                    <Label Grid.Column="1" Grid.Row="4" Height="28" HorizontalAlignment="Right" Margin="0,2,10,0" Name="label1" VerticalAlignment="Top" Width="46">
+                        <Label.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Value, ElementName=slider1}"></TextBlock>
+                                <TextBlock Text="秒" />
+                            </StackPanel>
+                        </Label.Content>
+                    </Label>
+                </Grid>
+            </Expander>
+            <Expander Header="服务信息" ExpandDirection="Down">
+                <Grid Name="gridinfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="230" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Height" Value="16" />
+                            <Setter Property="Margin" Value="10,0" />
+                        </Style>
+                        <Style TargetType="Label">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                        </Style>
+                    </Grid.Resources>
+                    <Label Content="开启时间"   Grid.Row="0" />
+                    <TextBlock Text="{Binding BeginTime,Converter={StaticResource dtToStr}}" Grid.Row="0" Grid.Column="1" />
+                    <Label Content="持续时间"   Grid.Row="1" />
+                    <TextBlock Text="{Binding OpenTime}" Grid.Row="1" Grid.Column="1" />
+                    <Label Content="当前路径"  Grid.Row="2" />
+                    <TextBlock Text="{Binding Path}"  Grid.Row="2" Grid.Column="1" />
+                    <Label Content="资源空间"  Grid.Row="3" />
+                    <TextBlock Text="{Binding ResourceSpaceSize}"   Grid.Row="3" Grid.Column="1" />
+                    <Label Content="资源大小"  Grid.Row="4" />
+                    <TextBlock Text="{Binding ResourceSize}" Grid.Column="1"  Grid.Row="4" />
+                </Grid>
+            </Expander>
+        </StackPanel>
+        <Button Content="开启服务" Height="23" HorizontalAlignment="Left" Margin="30,12,0,0" Name="btnStart" VerticalAlignment="Top" Width="75" Click="btnStart_Click" />
+        <Button Content="关闭服务" Height="23" HorizontalAlignment="Right" Margin="0,12,43,0" Name="btnStop" VerticalAlignment="Top" Width="75" Click="btnStop_Click" />
+        <Button Content="隐藏" Height="23" HorizontalAlignment="Left" Margin="105,12,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+    </Grid>
+</Window>
