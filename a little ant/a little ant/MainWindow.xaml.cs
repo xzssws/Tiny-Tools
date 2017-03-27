@@ -35,7 +35,7 @@ namespace a_little_ant
         {
             ant_core.First_Configuration();
             ant_core.Second_Ready();
-            ant_core.Third_Start();
+            ant_core.Third_Start(txt_input.Text);
         }
 
 

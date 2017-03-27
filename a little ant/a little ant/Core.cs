@@ -4,6 +4,18 @@ using System;
 
 namespace a_little_ant
 {
+    public static class Outputer
+    {
+        public static Action<object> action = p_Output;
+        public static void Output(object d)
+        {
+            App.Current.Dispatcher.BeginInvoke(action,d);
+        }
+        private static void p_Output(object d)
+        {
+            (App.Current.MainWindow as MainWindow).txt_output.AppendText(d + Environment.NewLine);
+        }
+    }
     public class Core
     {
         public void First_Configuration()
@@ -27,14 +39,14 @@ namespace a_little_ant
             crawler.PageLinksCrawlDisallowedAsync += antWork.Disallowed;//页面链接不允许爬取事件
         }
 
-        public void Third_Start()
+        public void Third_Start(string url)
         {
-            CrawlResult result = crawler.Crawl(new Uri("http://www.cnblogs.com/xzssws"));
+            CrawlResult result = crawler.Crawl(new Uri(url));
 
             if (result.ErrorOccurred)
-                Console.WriteLine("抓取完成 {0} 错误: {1}", result.RootUri.AbsoluteUri, result.ErrorException.Message);
+                Outputer.Output(string.Format("抓取完成 {0} 错误: {1}", result.RootUri.AbsoluteUri, result.ErrorException.Message));
             else
-                Console.WriteLine("抓取完成 {0} 并没发现错误", result.RootUri.AbsoluteUri);
+                Outputer.Output(string.Format("抓取完成 {0} 并没发现错误", result.RootUri.AbsoluteUri));
         }
 
         /// <summary>
