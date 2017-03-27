@@ -4,20 +4,12 @@ using System;
 
 namespace a_little_ant
 {
-    public static class Outputer
-    {
-        public static Action<object> action = p_Output;
-        public static void Output(object d)
-        {
-            App.Current.Dispatcher.BeginInvoke(action,d);
-        }
-        private static void p_Output(object d)
-        {
-            (App.Current.MainWindow as MainWindow).txt_output.AppendText(d + Environment.NewLine);
-        }
-    }
+
     public class Core
     {
+        /// <summary>
+        /// 配置
+        /// </summary>
         public void First_Configuration()
         {
             crawlConfig = new CrawlConfiguration();
@@ -31,6 +23,9 @@ namespace a_little_ant
             crawler = new PoliteWebCrawler(crawlConfig, null, null, null, null, null, null, null, null);
         }
 
+        /// <summary>
+        /// 准备
+        /// </summary>
         public void Second_Ready()
         {
             crawler.PageCrawlStartingAsync += antWork.Starting;//单个页面爬取开始
@@ -39,6 +34,10 @@ namespace a_little_ant
             crawler.PageLinksCrawlDisallowedAsync += antWork.Disallowed;//页面链接不允许爬取事件
         }
 
+        /// <summary>
+        /// 抓取
+        /// </summary>
+        /// <param name="url">网址</param>
         public void Third_Start(string url)
         {
             CrawlResult result = crawler.Crawl(new Uri(url));
