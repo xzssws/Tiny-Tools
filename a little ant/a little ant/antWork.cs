@@ -40,12 +40,10 @@ namespace a_little_ant
                     ni.Title = result.ExtractedTitle;
                     ni.FullText = result.ExtractedContent;
                     Outputer.Add(ni);
-                    Outputer.ToWeb(result.ExtractedContent);
                 }
                 if (string.IsNullOrEmpty(crawledPage.Content.Text))
                     Outputer.Output(string.Format("抓取页面错误: 页面无内容 {0}", crawledPage.Uri.AbsoluteUri)); 
             }
-
         }
         //抓取连接失败
         public static void Disallowed(object sender, PageLinksCrawlDisallowedArgs e)

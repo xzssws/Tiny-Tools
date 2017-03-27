@@ -24,7 +24,7 @@ namespace a_little_ant
             ant_core.First_Configuration();
             ant_core.Second_Ready();
             ant_core.Third_Start(txt_input.Text);
-            App.Current.Dispatcher.Invoke(new Action(delegate() { (App.Current.MainWindow as MainWindow).webctl.NavigateToString(Outputer.oldweb); }));
+          //  App.Current.Dispatcher.Invoke(new Action(delegate() { (App.Current.MainWindow as MainWindow).webctl.NavigateToString(Outputer.oldweb); }));
         }
 
         /// <summary>
@@ -38,6 +38,12 @@ namespace a_little_ant
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Start();
+            ShowDatasViewModel s = new ShowDatasViewModel();
+            
+            s.RootDatas = new System.Collections.ObjectModel.ObservableCollection<NoteInfo>(Outputer.list);
+            ShowDatasView sv = new ShowDatasView(s);
+            s.view = sv;
+            sv.ShowDialog();
         }
     }
 
@@ -57,7 +63,7 @@ namespace a_little_ant
         {
             (App.Current.MainWindow as MainWindow).txt_output.AppendText(d + Environment.NewLine);
         }
-        private static List<NoteInfo> list = new List<NoteInfo>();
+        public static List<NoteInfo> list = new List<NoteInfo>();
         internal static void Add(NoteInfo ni)
         {
             list.Add(ni);

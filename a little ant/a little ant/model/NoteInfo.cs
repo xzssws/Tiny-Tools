@@ -9,7 +9,7 @@ namespace a_little_ant.model
     /// <summary>
     /// 记录信息类
     /// </summary>
-    class NoteInfo
+    public class NoteInfo
     {
         private string title;
 
